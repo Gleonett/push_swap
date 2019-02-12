@@ -1,38 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_args.c                                       :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gleonett <gleonett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/08 17:09:04 by gleonett          #+#    #+#             */
-/*   Updated: 2019/02/11 16:43:39 by gleonett         ###   ########.fr       */
+/*   Created: 2018/12/04 14:29:04 by gleonett          #+#    #+#             */
+/*   Updated: 2018/12/12 16:56:29 by gleonett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker/checker.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
+# define BUFF_SIZE 32
 
-static int check_arg(const char *arg)
+# include <stdio.h>
+# include <unistd.h>
+# include <ctype.h>
+# include <fcntl.h>
+# include <stdlib.h>
+# include "checker/checker.h"
+
+int					get_next_line(const int fd, char **line);
+
+typedef	struct		s_gnl
 {
-	int i;
+	int				fd;
+	char			*str;
+	int				i;
+	struct s_gnl	*next;
+}					t_gnl;
 
-	i = 0;
-	if (arg[i] == '-')
-		i++;
-	while (arg[i] && arg[i] >= '0' && arg[i] <= '9')
-		i++;
-	if (arg[i] != '\0')
-		return (1);
-	return (0);
-}
-
-int check_args(int num, const char **data)
-{
-	int i;
-
-	i = -1;
-	while (++i < num)
-		if (check_arg(data[i]) != 0)
-			return (1);
-	return (0);
-}
+#endif

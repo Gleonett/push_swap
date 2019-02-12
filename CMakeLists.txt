@@ -33,6 +33,14 @@ file(GLOB checker
 #        "get_next_line/*.h"
 #        )
 
-add_executable(checker ${libft} ${checker} ${ft_printf} check_args.c init_stack.c stack.c)
+add_executable(checker ${libft} ${checker} ${ft_printf}
+        check_args.c
+        atoli.c
+        init_a_b_stacks.c
+        get_next_line.c
+        do_oper.c
+        to_do/do_s.c
+        to_do/do_p.c
+        to_do/do_r.c to_do/do_rr.c)
 add_executable(push_swap ${libft} ${checker})
 #${libft} ${stack} ${push_swap_lib} push_swap.c)

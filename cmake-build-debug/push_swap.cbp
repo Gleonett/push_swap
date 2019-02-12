@@ -122,6 +122,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/gleonett/Desktop/push_swap/atoli.c">
+			<Option target="checker"/>
+		</Unit>
 		<Unit filename="/Users/gleonett/Desktop/push_swap/check_args.c">
 			<Option target="checker"/>
 		</Unit>
@@ -135,6 +138,9 @@
 		</Unit>
 		<Unit filename="/Users/gleonett/Desktop/push_swap/checker/main.c">
 			<Option target="push_swap"/>
+			<Option target="checker"/>
+		</Unit>
+		<Unit filename="/Users/gleonett/Desktop/push_swap/do_oper.c">
 			<Option target="checker"/>
 		</Unit>
 		<Unit filename="/Users/gleonett/Desktop/push_swap/ft_printf/check_fmt/check_flags.c">
@@ -597,10 +603,25 @@
 		<Unit filename="/Users/gleonett/Desktop/push_swap/ft_printf/va_functions/va_arg_width.c">
 			<Option target="checker"/>
 		</Unit>
-		<Unit filename="/Users/gleonett/Desktop/push_swap/init_stack.c">
+		<Unit filename="/Users/gleonett/Desktop/push_swap/get_next_line.c">
 			<Option target="checker"/>
 		</Unit>
-		<Unit filename="/Users/gleonett/Desktop/push_swap/stack.c">
+		<Unit filename="/Users/gleonett/Desktop/push_swap/get_next_line.h">
+			<Option target="checker"/>
+		</Unit>
+		<Unit filename="/Users/gleonett/Desktop/push_swap/init_a_b_stacks.c">
+			<Option target="checker"/>
+		</Unit>
+		<Unit filename="/Users/gleonett/Desktop/push_swap/to_do/do_p.c">
+			<Option target="checker"/>
+		</Unit>
+		<Unit filename="/Users/gleonett/Desktop/push_swap/to_do/do_r.c">
+			<Option target="checker"/>
+		</Unit>
+		<Unit filename="/Users/gleonett/Desktop/push_swap/to_do/do_rr.c">
+			<Option target="checker"/>
+		</Unit>
+		<Unit filename="/Users/gleonett/Desktop/push_swap/to_do/do_s.c">
 			<Option target="checker"/>
 		</Unit>
 		<Unit filename="/Users/gleonett/Desktop/push_swap/CMakeLists.txt">

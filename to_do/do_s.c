@@ -1,38 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_args.c                                       :+:      :+:    :+:   */
+/*   do_s.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gleonett <gleonett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/08 17:09:04 by gleonett          #+#    #+#             */
+/*   Created: 2019/02/09 12:58:00 by gleonett          #+#    #+#             */
 /*   Updated: 2019/02/11 16:43:39 by gleonett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker/checker.h"
+#include "../checker/checker.h"
 
-static int check_arg(const char *arg)
+int do_sa(t_stacks *ab)
 {
-	int i;
-
-	i = 0;
-	if (arg[i] == '-')
-		i++;
-	while (arg[i] && arg[i] >= '0' && arg[i] <= '9')
-		i++;
-	if (arg[i] != '\0')
-		return (1);
+	if (ab->a_num < 2)
+		return (0);
+	ft_swap_int(ab->a + ab->a_top, ab->a + ab->a_top + 1);
 	return (0);
 }
 
-int check_args(int num, const char **data)
+int do_sb(t_stacks *ab)
 {
-	int i;
+	if (ab->b_num < 2)
+		return (0);
+	ft_swap_int(ab->b + ab->b_top, ab->b + ab->b_top + 1);
+	return (0);
+}
 
-	i = -1;
-	while (++i < num)
-		if (check_arg(data[i]) != 0)
-			return (1);
+int do_ss(t_stacks *ab)
+{
+	do_sa(ab);
+	do_sb(ab);
 	return (0);
 }
