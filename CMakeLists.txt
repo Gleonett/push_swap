@@ -23,24 +23,21 @@ file(GLOB checker
         "checker/*.c"
         )
 
-#file(GLOB push_swap_lib
-#        "push_swap_lib/*.c"
-#        "push_swap_lib/*.h"
-#        )
+file(GLOB push_swap
+        "push_swap/push_swap.c"
+        "push_swap/*.c"
+        "push_swap/*.h"
+        )
+file(GLOB common
+        *.c
+        to_do/*.c
+        )
 
 #file(GLOB get_next_line
 #        "get_next_line/*.c"
 #        "get_next_line/*.h"
 #        )
 
-add_executable(checker ${libft} ${checker} ${ft_printf}
-        check_args.c
-        atoli.c
-        init_a_b_stacks.c
-        get_next_line.c
-        do_oper.c
-        to_do/do_s.c
-        to_do/do_p.c
-        to_do/do_r.c to_do/do_rr.c)
-add_executable(push_swap ${libft} ${checker})
+add_executable(checker ${checker} ${libft} ${ft_printf} ${common} print_stack.c)
+add_executable(push_swap ${push_swap} ${libft} ${ft_printf} ${common} push_swap/pre_sort.c push_swap/sort_stack.c)
 #${libft} ${stack} ${push_swap_lib} push_swap.c)

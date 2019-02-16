@@ -14,6 +14,7 @@
 
 int	do_pa(t_stacks *ab)
 {
+    ft_putstr_full("pa\n");
 	if (ab->b_num < 1)
 		return (0);
 	if ((ab->a_top -= 1) < 0)
@@ -28,6 +29,7 @@ int	do_pa(t_stacks *ab)
 
 int	do_pb(t_stacks *ab)
 {
+    ft_putstr_full("pb\n");
 	if (ab->a_num < 1)
 		return (0);
 	if ((ab->b_top -= 1) < 0)

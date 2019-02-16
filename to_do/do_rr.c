@@ -12,10 +12,12 @@
 
 #include "../checker/checker.h"
 
-int	do_rra(t_stacks *ab)
+int	do_rra(t_stacks *ab, int flag)
 {
 	int a_bot;
 
+	if (flag == 0)
+        ft_putstr_full("rra\n");
 	if (ab->a_num < 2)
 		return (0);
 	if (ab->a_top + ab->a_num > ab->num)
@@ -28,10 +30,12 @@ int	do_rra(t_stacks *ab)
 	return (0);
 }
 
-int	do_rrb(t_stacks *ab)
+int	do_rrb(t_stacks *ab, int flag)
 {
 	int b_bot;
 
+	if (flag == 0)
+        ft_putstr_full("rrb\n");
 	if (ab->b_num < 2)
 		return (0);
 	if (ab->b_top + ab->b_num > ab->num)
@@ -46,7 +50,8 @@ int	do_rrb(t_stacks *ab)
 
 int	do_rrr(t_stacks *ab)
 {
-	do_rra(ab);
-	do_rrb(ab);
+    ft_putstr_full("rrr\n");
+    do_rra(ab, 1);
+    do_rrb(ab, 1);
 	return (0);
 }

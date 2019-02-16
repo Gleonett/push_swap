@@ -12,10 +12,12 @@
 
 #include "../checker/checker.h"
 
-int	do_sa(t_stacks *ab)
+int	do_sa(t_stacks *ab, int flag)
 {
 	int a_second;
 
+	if (flag == 0)
+	    ft_putstr_full("sa\n");
 	if (ab->a_num < 2)
 		return (0);
 	if ((a_second = ab->a_top + 1) == ab->num)
@@ -24,10 +26,11 @@ int	do_sa(t_stacks *ab)
 	return (0);
 }
 
-int	do_sb(t_stacks *ab)
+int	do_sb(t_stacks *ab, int flag)
 {
 	int b_second;
-
+	if (flag == 0)
+        ft_putstr_full("sb\n");
 	if (ab->b_num < 2)
 		return (0);
 	if ((b_second = ab->b_top + 1) == ab->num)
@@ -38,7 +41,8 @@ int	do_sb(t_stacks *ab)
 
 int	do_ss(t_stacks *ab)
 {
-	do_sa(ab);
-	do_sb(ab);
+	ft_putstr_full("ss\n");
+	do_sa(ab, 1);
+	do_sb(ab, 1);
 	return (0);
 }
