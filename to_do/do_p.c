@@ -12,7 +12,7 @@
 
 #include "../checker/checker.h"
 
-int	do_pa(t_stacks *ab)
+int		do_pa(t_stacks *ab)
 {
     ft_putstr_full("pa\n");
 	if (ab->b_num < 1)
@@ -27,7 +27,7 @@ int	do_pa(t_stacks *ab)
 	return (0);
 }
 
-int	do_pb(t_stacks *ab)
+int		do_pb(t_stacks *ab)
 {
     ft_putstr_full("pb\n");
 	if (ab->a_num < 1)
@@ -40,4 +40,10 @@ int	do_pb(t_stacks *ab)
 	ab->a_num -= 1;
 	ab->b_num += 1;
 	return (0);
+}
+
+void	many_pa(t_stacks *ab, int num)
+{
+	while (--num > -1)
+		do_pa(ab);
 }

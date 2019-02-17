@@ -6,7 +6,7 @@
 /*   By: gleonett <gleonett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 16:07:59 by gleonett          #+#    #+#             */
-/*   Updated: 2019/02/16 17:47:29 by gleonett         ###   ########.fr       */
+/*   Updated: 2019/02/17 13:32:55 by gleonett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,18 @@
 static int mediana(t_sorted srtd, int *mediana, int *main_med, int *flag)
 {
 	int num;
-	static int count_main_mediana;
 
-	if (srtd.top >= srtd.bot - 1)
+	if (srtd.top >= srtd.bot)
 	{
         *flag = 1;
+        *mediana = srtd.sorted[srtd.top];
         return (1);
     }
 	num = (srtd.bot - srtd.top) / 2 + srtd.top;
 	*mediana = srtd.sorted[num];
-//    if (count_main_mediana == 1 && *mediana < *main_med)
-//    {
-//        *flag = 0;
-//        count_main_mediana++;
-//    }
     if (*flag == 2)
     {
         *main_med = *mediana;
-        count_main_mediana++;
         *flag = 0;
     }
 	return (0);
@@ -40,22 +34,15 @@ static int mediana(t_sorted srtd, int *mediana, int *main_med, int *flag)
 
 t_sorted init_sorted(t_sorted srtd, int med, int main_med, int flag)
 {
-    if (med >= main_med)
-    {
-        if (flag == 0)
-            srtd.bot /= 2;
+	static int count_recurs;
+
+        if (flag == 1)
+			srtd.bot /= 2;
         else
-            srtd.top += ((srtd.bot - srtd.top) / 2);
-        return (srtd);
-    }
-    else
-    {
-        if (flag == 0)
-            srtd.top += ((srtd.bot - srtd.top) / 2);
-        else
-            srtd.bot = srtd.bot / 2;
-        return (srtd);
-    }
+			srtd.top += ((srtd.bot - srtd.top) / 2);
+        count_recurs++;
+    srtd.flag = flag;
+	return (srtd);
 }
 
 int 	q_sort_stack(t_stacks *ab, t_sorted srtd, int main_med, int *flag)
@@ -65,140 +52,62 @@ int 	q_sort_stack(t_stacks *ab, t_sorted srtd, int main_med, int *flag)
 	int f = 0;
 
 	count = 0;
-	CHECK_END (mediana(srtd, &med, &main_med, flag))
+	if (mediana(srtd, &med, &main_med, flag) == 1)
+	{
+		if (med >= main_med)
+		{
+			if (ab->a[ab->a_top] >= med && ab->a_num == 2)
+				do_sa(ab, 0);
+			ft_printf("[%d]  [%d]\n", ab->b[ab->b_top], ab->b[ab->b_top + 1]);
+			if (srtd.flag == 1 && ab->b[ab->b_top] < ab->b[ab->b_top + 1 ==
+					ab->num ? 0 : ab->b_top + 1])
+				do_sb(ab, 0);
+			do_pa(ab);
+			print_stack(*ab);
+			return (1);
+		}
+	}
 	if (med >= main_med)
 	{
         if (*flag == 0)
-            while (count < srtd.bot - srtd.top)
+            while (count < (srtd.bot - srtd.top) / 2)
             {
-                if (ab->a[ab->a_top] < med)
-                    do_pb(ab);
+                if (ab->a[ab->a_top] <= med)
+				{
+					count++;
+					do_pb(ab);
+				}
                 else
                     do_ra(ab, 0);
-                count++;
+				print_stack(*ab);
             }
-        else
-            while (count < srtd.bot - srtd.top)
-            {
-                if (ab->b[ab->b_top] > srtd.sorted[srtd.bot + f])
-                {
-                    do_pa(ab);
-                    f++;
-                }
-                if (ab->b[ab->b_top] >= med)
-                    do_rrb(ab, 0);
-                else
-                    do_sb(ab, 0);
-                count++;
-            }
+		print_stack(*ab);
     }
-//    else
-//    {
-//        if (*flag == 0)
-//        {
-//            f = 0;
-//            while (count < (srtd.bot - srtd.top - 1))
-//            {
-//                ft_printf("[%d]  [%d]\n", ab->b[ab->b_top], srtd.sorted[srtd.bot - f]);
-//                if (ab->b[ab->b_top] <= med)
-//                {
-//                    do_rb(ab, 0);
-//                }
-//                else if (ab->b[ab->b_top] == srtd.sorted[srtd.bot - f])
-//                {
-//                    do_pa(ab);
-//                    f++;
-//                    count++;
-//                }
-//                else
-//                {
-//                    do_sb(ab, 0);
-//                }
-//                print_stack(*ab);
-//            }
-//        }
-//        else
-//            while (count < srtd.bot - srtd.top)
-//            {
-//                if (ab->b[ab->b_top] > srtd.sorted[srtd.bot + f])
-//                {
-//                    do_pa(ab);
-//                    f++;
-//                }
-//                else if (ab->b[ab->b_top] <= med)
-//                {
-//                    do_rb(ab, 0);
-//                }
-//                else
-//                    do_sb(ab, 0);
-//                count++;
-//            }
-//    }
-	print_stack(*ab);
-    ft_printf("left = [%d]\n", med);
-	q_sort_stack(ab, init_sorted(srtd, med, main_med, 1), main_med, flag);
-	if (med == main_med)
-    {
-	    f = 2;
-	    count = 0;
-        while (count < (srtd.bot / 2))
-        {
-            if (ab->b[ab->b_top] == srtd.sorted[srtd.bot - f])
-            {
-                do_pa(ab);
-                f++;
-            }
-            else if (ab->b[ab->b_top] < med)
-                do_rrb(ab, 0);
-            else
-                do_sb(ab, 0);
-            count++;
-            print_stack(*ab);
-        }
-        *flag = 0;
-    }
-	ft_printf("right = [%d]\n", med);
-	q_sort_stack(ab, init_sorted(srtd, med, main_med, 0), main_med, flag);
-	if (med < main_med)
-	{
-		f = 0;
-		while (count < (srtd.bot - srtd.top))
-		{
-			ft_printf("[%d]  [%d]\n", ab->b[ab->b_top], srtd.sorted[srtd.bot - f]);
-			if (ab->b[ab->b_top] < med)
-			{
-				do_rb(ab, 0);
-			}
-			else if (ab->b[ab->b_top] == srtd.sorted[srtd.bot - f])
-			{
-				do_pa(ab);
-				f++;
-				count++;
-			}
-			else
-			{
-				do_sb(ab, 0);
-			}
-			print_stack(*ab);
-		}
-	}
 	else
-		while (count < srtd.bot - srtd.top)
-		{
-			if (ab->b[ab->b_top] > srtd.sorted[srtd.bot + f])
+	{
+		if (*flag == 0)
+			while (count < (srtd.bot - srtd.top) / 2)
 			{
-				do_pa(ab);
-				f++;
-			}
-			else if (ab->b[ab->b_top] <= med)
+				if (ab->b[ab->b_top] >= med)
 				{
-					do_rb(ab, 0);
+					count++;
+					do_pa(ab);
 				}
 				else
-					do_sb(ab, 0);
-			count++;
-		}
-    ft_printf("exit = [%d]\n", med);
+					do_rb(ab, 0);
+				print_stack(*ab);
+			}
+	}
+	print_stack(*ab);
+//    ft_printf("left = [%d]\n", med);
+	q_sort_stack(ab, init_sorted(srtd, med, main_med, 1), main_med, flag);
+	if (med == main_med)
+	{
+		*flag = 0;
+	}
+//	ft_printf("right = [%d]\n", med);
+	q_sort_stack(ab, init_sorted(srtd, med, main_med, 0), main_med, flag);
+//    ft_printf("exit = [%d]\n", med);
 	return (0);
 }
 
@@ -213,23 +122,19 @@ int	sort_stack(t_stacks *ab, int *sorted)
 	srtd.sorted = sorted;
 	srtd.top = 0;
 	srtd.bot = ab->num;
+	srtd.flag = 0;
 //	lol = init_sorted(srtd, 1);
 //	mediana(srtd, &med);
 //	ft_printf("%d\n%d", lol.top, lol.bot);
-	q_sort_stack(ab, srtd, 0, &flag);
+//	q_sort_stack(ab, srtd, 0, &flag);
+	do_pb(ab);
+	do_pb(ab);
+	do_pb(ab);
+	do_pb(ab);
+	mini_sort(ab, srtd, 1, 1);
     ft_printf("%d %d %d %d %d %d %d %d %d %d\n", sorted[0], sorted[1],
               sorted[2], sorted[3], sorted[4], sorted[5], sorted[6], sorted[7],
               sorted[8], sorted[9]);
-    while (ab->b_num != 0)
-    {
-        ft_printf("[%d]  [%d]\n", srtd.sorted[srtd.top + ab->b_num - 1], ab->b[ab->b_top]);
-        if (srtd.sorted[srtd.top + ab->b_num - 1] != ab->b[ab->b_top])
-            do_rb(ab, 0);
-        else
-            do_pa(ab);
-        print_stack(*ab);
-    }
-    do_pa(ab);
     print_stack(*ab);
     return (0);
 }

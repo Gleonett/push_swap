@@ -690,6 +690,12 @@
 		<Unit filename="/Users/gleonett/Desktop/push_swap/push_swap/main.c">
 			<Option target="push_swap"/>
 		</Unit>
+		<Unit filename="/Users/gleonett/Desktop/push_swap/push_swap/mini_sort.c">
+			<Option target="push_swap"/>
+		</Unit>
+		<Unit filename="/Users/gleonett/Desktop/push_swap/push_swap/mini_sort_2.c">
+			<Option target="push_swap"/>
+		</Unit>
 		<Unit filename="/Users/gleonett/Desktop/push_swap/push_swap/pre_sort.c">
 			<Option target="push_swap"/>
 		</Unit>

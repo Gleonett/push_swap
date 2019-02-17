@@ -13,7 +13,8 @@
 #ifndef PUSH_SWAP_PUSH_SWAP_H
 # define PUSH_SWAP_PUSH_SWAP_H
 # define FREE_A_B ft_memdel((void **)(&(ab.b))); ft_memdel((void **)(&(ab.b)));
-# define STCK_NXT(x) if (ab->a_top + 1 == ab->num) {x = 0;} else {x = ab->a_top + 1;}
+# define B_NEXT (ab->b_top + 1 == ab->num ? 0 : ab->b_top + 1)
+# define A_NEXT (ab->a_top + 1 == ab->num ? 0 : ab->a_top + 1)
 # define CH_ERR(x) if((x) == 1) {FREE_A_B; return(1);}
 
 # include "../ft_printf/ft_printf.h"
@@ -24,11 +25,14 @@ typedef struct	s_sorted
 	int *sorted;
 	int top;
 	int bot;
+	int flag;
 }				t_sorted;
 
 int			push_swap(int num, const char **args);
 int			*pre_sort(t_stacks ab);
 int			sort_stack(t_stacks *ab, int *sorted);
+int			mini_sort(t_stacks *ab, t_sorted sorted, int aorb, int flag);
+void		many_pa(t_stacks *ab, int num);
 void		print_stack(t_stacks ab);
 
 #endif

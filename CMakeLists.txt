@@ -39,5 +39,5 @@ file(GLOB common
 #        )
 
 add_executable(checker ${checker} ${libft} ${ft_printf} ${common} print_stack.c)
-add_executable(push_swap ${push_swap} ${libft} ${ft_printf} ${common} push_swap/pre_sort.c push_swap/sort_stack.c)
+add_executable(push_swap ${push_swap} ${libft} ${ft_printf} ${common} push_swap/pre_sort.c push_swap/sort_stack.c push_swap/mini_sort.c push_swap/mini_sort_2.c)
 #${libft} ${stack} ${push_swap_lib} push_swap.c)
