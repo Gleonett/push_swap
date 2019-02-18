@@ -12,8 +12,6 @@
 
 #include "push_swap.h"
 
-void	mini_b_1(t_stacks *ab, t_sorted sorted);
-
 static void	mini_a_0(t_stacks *ab, t_sorted sorted)
 {
 	if (sorted.sorted[sorted.top] == ab->a[ab->a_top])
@@ -87,6 +85,8 @@ int			mini_sort(t_stacks *ab, t_sorted sorted, int aorb, int flag)
 		mini_a_0(ab, sorted);
 	else if (aorb == 1 && flag == 0)
 		mini_b_0(ab, sorted);
+	else if (aorb == 0 && flag == 1)
+		mini_a_1(ab, sorted);
 	else if (aorb == 1 && flag == 1)
 		mini_b_1(ab, sorted);
 	return (0);

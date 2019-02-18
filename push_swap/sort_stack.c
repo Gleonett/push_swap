@@ -120,21 +120,23 @@ int	sort_stack(t_stacks *ab, int *sorted)
 
 	flag = 2;
 	srtd.sorted = sorted;
-	srtd.top = 0;
+	srtd.top = 1;
 	srtd.bot = ab->num;
 	srtd.flag = 0;
 //	lol = init_sorted(srtd, 1);
 //	mediana(srtd, &med);
 //	ft_printf("%d\n%d", lol.top, lol.bot);
 //	q_sort_stack(ab, srtd, 0, &flag);
-	do_pb(ab);
-	do_pb(ab);
-	do_pb(ab);
-	do_pb(ab);
-	mini_sort(ab, srtd, 1, 1);
+//	do_pb(ab);
+//	do_pb(ab);
+//	do_pb(ab);
+//	do_pb(ab);
+	ft_printf("------------------------------------\n");
+	mini_sort(ab, srtd, 0, 1);
+	ft_printf("------------------------------------\n");
     ft_printf("%d %d %d %d %d %d %d %d %d %d\n", sorted[0], sorted[1],
               sorted[2], sorted[3], sorted[4], sorted[5], sorted[6], sorted[7],
               sorted[8], sorted[9]);
-    print_stack(*ab);
+	print_stack(*ab);
     return (0);
 }

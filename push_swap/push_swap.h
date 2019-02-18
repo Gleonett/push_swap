@@ -32,6 +32,8 @@ int			push_swap(int num, const char **args);
 int			*pre_sort(t_stacks ab);
 int			sort_stack(t_stacks *ab, int *sorted);
 int			mini_sort(t_stacks *ab, t_sorted sorted, int aorb, int flag);
+void		mini_b_1(t_stacks *ab, t_sorted sorted);
+void		mini_a_1(t_stacks *ab, t_sorted sorted);
 void		many_pa(t_stacks *ab, int num);
 void		print_stack(t_stacks ab);
 
