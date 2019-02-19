@@ -26,6 +26,7 @@ static void	mini_a_1_sec_happening(t_stacks *ab, t_sorted sorted)
 
 void		mini_a_1(t_stacks *ab, t_sorted sorted)
 {
+//	ft_printf("%d %d\n", sorted.sorted[sorted.top], ab->a[ab->a_top]);
 	if (sorted.sorted[sorted.top] == ab->a[ab->a_top])
 	{
 		do_sa(ab, 0);

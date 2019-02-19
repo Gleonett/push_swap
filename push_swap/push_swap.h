@@ -15,6 +15,7 @@
 # define FREE_A_B ft_memdel((void **)(&(ab.b))); ft_memdel((void **)(&(ab.b)));
 # define B_NEXT (ab->b_top + 1 == ab->num ? 0 : ab->b_top + 1)
 # define A_NEXT (ab->a_top + 1 == ab->num ? 0 : ab->a_top + 1)
+# define EVEN_NUM(x) (x % 2 == 0 ? x : x + 1)
 # define CH_ERR(x) if((x) == 1) {FREE_A_B; return(1);}
 
 # include "../ft_printf/ft_printf.h"
@@ -26,15 +27,26 @@ typedef struct	s_sorted
 	int top;
 	int bot;
 	int flag;
+	int difference;
 }				t_sorted;
 
 int			push_swap(int num, const char **args);
 int			*pre_sort(t_stacks ab);
 int			sort_stack(t_stacks *ab, int *sorted);
 int			mini_sort(t_stacks *ab, t_sorted sorted, int aorb, int flag);
+void		push_a_main_even(t_stacks *ab, t_sorted srtd, int med);
+void		push_a_main_uneven(t_stacks *ab, t_sorted srtd, int med);
+void		push_a_secondary_even(t_stacks *ab, t_sorted srtd, int med);
+void		push_a_secondary_uneven(t_stacks *ab, t_sorted srtd, int med);
+void		push_b_main_even(t_stacks *ab, t_sorted srtd, int med);
+void		push_b_main_uneven(t_stacks *ab, t_sorted srtd, int med);
+void		push_b_secondary_even(t_stacks *ab, t_sorted srtd, int med);
+void		push_b_secondary_uneven(t_stacks *ab, t_sorted srtd, int med);
 void		mini_b_1(t_stacks *ab, t_sorted sorted);
 void		mini_a_1(t_stacks *ab, t_sorted sorted);
 void		many_pa(t_stacks *ab, int num);
+void		many_rra(t_stacks *ab, int num);
+void		many_rrb(t_stacks *ab, int num);
 void		print_stack(t_stacks ab);
 
 #endif

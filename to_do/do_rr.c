@@ -30,6 +30,12 @@ int	do_rra(t_stacks *ab, int flag)
 	return (0);
 }
 
+void	many_rra(t_stacks *ab, int num)
+{
+	while (--num > -1)
+		do_rra(ab, 0);
+}
+
 int	do_rrb(t_stacks *ab, int flag)
 {
 	int b_bot;
@@ -46,6 +52,12 @@ int	do_rrb(t_stacks *ab, int flag)
 		ab->b_top = ab->num - 1;
 	ab->b[ab->b_top] = ab->b[b_bot];
 	return (0);
+}
+
+void	many_rrb(t_stacks *ab, int num)
+{
+	while (--num > -1)
+		do_rrb(ab, 0);
 }
 
 int	do_rrr(t_stacks *ab)

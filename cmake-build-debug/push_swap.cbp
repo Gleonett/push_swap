@@ -699,6 +699,12 @@
 		<Unit filename="/Users/gleonett/Desktop/push_swap/push_swap/pre_sort.c">
 			<Option target="push_swap"/>
 		</Unit>
+		<Unit filename="/Users/gleonett/Desktop/push_swap/push_swap/push_a.c">
+			<Option target="push_swap"/>
+		</Unit>
+		<Unit filename="/Users/gleonett/Desktop/push_swap/push_swap/push_b.c">
+			<Option target="push_swap"/>
+		</Unit>
 		<Unit filename="/Users/gleonett/Desktop/push_swap/push_swap/push_swap.c">
 			<Option target="push_swap"/>
 		</Unit>

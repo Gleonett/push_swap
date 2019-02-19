@@ -55,16 +55,16 @@ int			checker(int num, const char **args)
 //					"rrb", "rrb", "rrb", "rrb", "rrb", "rrb", "ra"};
 	if (check_args(num, args) != 0)
 		return (1);
-	CH_ERR(init_a_b_stacks(&ab, num, args) != 0);
+//	CH_ERR(init_a_b_stacks(&ab, num, args) != 0);
 //	fd = open("test", O_RDONLY);
 //	while (get_next_line(fd, &oper) > 0)
-	print_stack(ab);
+//	print_stack(ab);
 	int i = -1;
 	while (++i < c)
 	{
 		do_oper(&ab, oper[i]);
 		ft_printf("%{BLACK %s\n", oper[i]);
-		print_stack(ab);
+//		print_stack(ab);
 //		ft_memdel((void **)&oper);
 	}
 	ret = check_arr(ab);
