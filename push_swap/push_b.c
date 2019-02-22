@@ -12,9 +12,10 @@
 
 #include "push_swap.h"
 
-void	push_b_main_even(t_stacks *ab, t_sorted srtd, int med)
+void	push_b_main_even(t_stacks *ab, t_sorted srtd, int med, int flag)
 {
 	const int	difference = (srtd.bot - srtd.top) / 2;
+	const int	rorrr = r_or_rr(*ab, 0, med, difference);
 	int			count;
 	int			f;
 
@@ -25,21 +26,31 @@ void	push_b_main_even(t_stacks *ab, t_sorted srtd, int med)
 		if (ab->a[ab->a_top] <= med)
 		{
 			count++;
-			do_pb(ab);
+			do_pb(ab, 0);
 		}
 		else
 		{
 			f++;
-			do_ra(ab, 0);
+			if (rorrr == 0)
+				do_ra(ab, 0);
+			else
+				do_rra(ab, 0);
 		}
 //		print_stack(*ab);
 	}
-	many_rra(ab, f);
+	if (flag == 1)
+	{
+		if (rorrr == 0)
+			many_rra(ab, f, 0);
+		else
+			many_ra(ab, f, 0);
+	}
 }
 
-void	push_b_main_uneven(t_stacks *ab, t_sorted srtd, int med)
+void	push_b_main_uneven(t_stacks *ab, t_sorted srtd, int med, int flag)
 {
 	const int	difference = (srtd.bot - srtd.top) / 2;
+	const int	rorrr = r_or_rr(*ab, 0, med, difference);
 	int			count;
 	int			f;
 
@@ -50,21 +61,31 @@ void	push_b_main_uneven(t_stacks *ab, t_sorted srtd, int med)
 		if (ab->a[ab->a_top] <= med)
 		{
 			count++;
-			do_pb(ab);
+			do_pb(ab, 0);
 		}
 		else
 		{
 			f++;
-			do_ra(ab, 0);
+			if (rorrr == 0)
+				do_ra(ab, 0);
+			else
+				do_rra(ab, 0);
 		}
 //		print_stack(*ab);
 	}
-	many_rra(ab, f);
+	if (flag == 1)
+	{
+		if (rorrr == 0)
+			many_rra(ab, f, 0);
+		else
+			many_ra(ab, f, 0);
+	}
 }
 
 void	push_b_secondary_even(t_stacks *ab, t_sorted srtd, int med)
 {
 	const int	difference = (srtd.bot - srtd.top) / 2;
+	const int	rorrr = r_or_rr(*ab, 0, med, difference);
 	int			count;
 	int			f;
 
@@ -75,21 +96,28 @@ void	push_b_secondary_even(t_stacks *ab, t_sorted srtd, int med)
 		if (ab->a[ab->a_top] <= med)
 		{
 			count++;
-			do_pb(ab);
+			do_pb(ab, 0);
 		}
 		else
 		{
 			f++;
-			do_ra(ab, 0);
+			if (rorrr == 0)
+				do_ra(ab, 0);
+			else
+				do_rra(ab, 0);
 		}
 //		print_stack(*ab);
 	}
-	many_rra(ab, f);
+	if (rorrr == 0)
+		many_rra(ab, f, 0);
+	else
+		many_ra(ab, f, 0);
 }
 
 void	push_b_secondary_uneven(t_stacks *ab, t_sorted srtd, int med)
 {
 	const int	difference = (srtd.bot - srtd.top) / 2;
+	const int	rorrr = r_or_rr(*ab, 0, med, difference);
 	int			count;
 	int			f;
 
@@ -100,14 +128,20 @@ void	push_b_secondary_uneven(t_stacks *ab, t_sorted srtd, int med)
 		if (ab->a[ab->a_top] <= med)
 		{
 			count++;
-			do_pb(ab);
+			do_pb(ab, 0);
 		}
 		else
 		{
 			f++;
-			do_ra(ab, 0);
+			if (rorrr == 0)
+				do_ra(ab, 0);
+			else
+				do_rra(ab, 0);
 		}
 //		print_stack(*ab);
 	}
-	many_rra(ab, f);
+	if (rorrr == 0)
+		many_rra(ab, f, 0);
+	else
+		many_ra(ab, f, 0);
 }

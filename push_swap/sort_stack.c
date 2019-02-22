@@ -16,7 +16,7 @@ static int mediana(t_sorted srtd, int *mediana, int *main_med, int *flag)
 {
 	int num;
 
-	if ((srtd.bot - srtd.top) % 2 == 1)
+	if ((srtd.bot - srtd.top) % 2 == 1 && (srtd.bot - srtd.top) != 1)
 		num = (srtd.bot - srtd.top) / 2 + srtd.top + 1;
 	else
 		num = (srtd.bot - srtd.top) / 2 + srtd.top;
@@ -84,9 +84,9 @@ int 	q_sort_stack(t_stacks *ab, t_sorted srtd, int main_med, int *flag)
 	{
         if (srtd.flag == 1)
         	if ((srtd.bot - srtd.top) % 2 == 0)
-            	push_b_main_even(ab, srtd, med);
+            	push_b_main_even(ab, srtd, med, *flag);
         	else
-				push_b_main_uneven(ab, srtd, med);
+				push_b_main_uneven(ab, srtd, med, *flag);
         else
 			if ((srtd.bot - srtd.top) % 2 == 0)
 				push_a_main_even(ab, srtd, med);
@@ -119,6 +119,7 @@ int	sort_stack(t_stacks *ab, int *sorted)
 	t_sorted srtd;
 	t_sorted lol;
 	int med;
+	int main_med;
 	int flag;
 
 	flag = 2;
@@ -126,9 +127,14 @@ int	sort_stack(t_stacks *ab, int *sorted)
 	srtd.top = 0;
 	srtd.bot = ab->num;
 	srtd.flag = 1;
-//	print_stack(*ab);
-//	ft_printf("------------------------------------\n");
-	q_sort_stack(ab, srtd, 0, &flag);
+	mediana(srtd, &med, &main_med, &flag);
+
+	print_stack(*ab);
+	sort_ten(ab, srtd, med, 0);
+	print_stack(*ab);
+	//	ft_printf("------------------------------------\n");
+//	r_or_rr(*ab, 0, med, (srtd.bot - srtd.top) / 2);
+//	q_sort_stack(ab, srtd, 0, &flag);
 //	ft_printf("------------------------------------\n");
 //	print_stack(*ab);
     return (0);

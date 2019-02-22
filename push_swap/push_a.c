@@ -15,6 +15,7 @@
 void	push_a_main_even(t_stacks *ab, t_sorted srtd, int med)
 {
 	const int	difference = (srtd.bot - srtd.top) / 2;
+	const int	rorrr = r_or_rr(*ab, 1, med, difference);
 	int			count;
 	int			f;
 
@@ -25,21 +26,28 @@ void	push_a_main_even(t_stacks *ab, t_sorted srtd, int med)
 		if (ab->b[ab->b_top] > med)
 		{
 			count++;
-			do_pa(ab);
+			do_pa(ab, 0);
 		}
 		else
 		{
 			f++;
-			do_rb(ab, 0);
+			if (rorrr == 0)
+				do_rb(ab, 0);
+			else
+				do_rrb(ab, 0);
 		}
 //		print_stack(*ab);
 	}
-	many_rrb(ab, f);
+	if (rorrr == 0)
+		many_rrb(ab, f, 0);
+	else
+		many_rb(ab, f, 0);
 }
 
 void	push_a_main_uneven(t_stacks *ab, t_sorted srtd, int med)
 {
 	const int	difference = (srtd.bot - srtd.top + 1) / 2;
+	const int	rorrr = r_or_rr(*ab, 1, med, difference);
 	int			count;
 	int			f;
 
@@ -50,21 +58,28 @@ void	push_a_main_uneven(t_stacks *ab, t_sorted srtd, int med)
 		if (ab->b[ab->b_top] > med)
 		{
 			count++;
-			do_pa(ab);
+			do_pa(ab, 0);
 		}
 		else
 		{
 			f++;
-			do_rb(ab, 0);
+			if (rorrr == 0)
+				do_rb(ab, 0);
+			else
+				do_rrb(ab, 0);
 		}
 //		print_stack(*ab);
 	}
-	many_rrb(ab, f);
+	if (rorrr == 0)
+		many_rrb(ab, f, 0);
+	else
+		many_rb(ab, f, 0);
 }
 
 void	push_a_secondary_even(t_stacks *ab, t_sorted srtd, int med)
 {
 	const int	difference = (srtd.bot - srtd.top) / 2;
+	const int	rorrr = r_or_rr(*ab, 1, med, difference);
 	int			count;
 	int			f;
 
@@ -75,21 +90,28 @@ void	push_a_secondary_even(t_stacks *ab, t_sorted srtd, int med)
 		if (ab->b[ab->b_top] > med)
 		{
 			count++;
-			do_pa(ab);
+			do_pa(ab, 0);
 		}
 		else
 		{
 			f++;
-			do_rb(ab, 0);
+			if (rorrr == 0)
+				do_rb(ab, 0);
+			else
+				do_rrb(ab, 0);
 		}
 //		print_stack(*ab);
 	}
-	many_rrb(ab, f);
+	if (rorrr == 0)
+		many_rrb(ab, f, 0);
+	else
+		many_rb(ab, f, 0);
 }
 
 void	push_a_secondary_uneven(t_stacks *ab, t_sorted srtd, int med)
 {
 	const int	difference = (srtd.bot - srtd.top + 1) / 2;
+	const int	rorrr = r_or_rr(*ab, 1, med, difference);
 	int			count;
 	int			f;
 
@@ -100,14 +122,20 @@ void	push_a_secondary_uneven(t_stacks *ab, t_sorted srtd, int med)
 		if (ab->b[ab->b_top] > med)
 		{
 			count++;
-			do_pa(ab);
+			do_pa(ab, 0);
 		}
 		else
 		{
 			f++;
-			do_rb(ab, 0);
+			if (rorrr == 0)
+				do_rb(ab, 0);
+			else
+				do_rrb(ab, 0);
 		}
 //		print_stack(*ab);
 	}
-	many_rrb(ab, f);
+	if (rorrr == 0)
+		many_rrb(ab, f, 0);
+	else
+		many_rb(ab, f, 0);
 }

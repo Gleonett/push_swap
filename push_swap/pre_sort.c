@@ -25,8 +25,8 @@ int	*pre_sort(t_stacks ab)
 	i = -1;
 	while (++i <= ab.num - 1 - i)
 		ft_swap_int(sorted + i, sorted + (ab.num - 1 - i));
-	while (++kek < ab.num)
-		ft_printf("%d ", sorted[kek]);
-	ft_putchar('\n');
+//	while (++kek < ab.num)
+//		ft_printf("%d ", sorted[kek]);
+//	ft_putchar('\n');
 	return (sorted);
 }

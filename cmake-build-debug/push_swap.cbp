@@ -687,6 +687,9 @@
 			<Option target="push_swap"/>
 			<Option target="checker"/>
 		</Unit>
+		<Unit filename="/Users/gleonett/Desktop/push_swap/push_swap/cpy_stacks.c">
+			<Option target="push_swap"/>
+		</Unit>
 		<Unit filename="/Users/gleonett/Desktop/push_swap/push_swap/main.c">
 			<Option target="push_swap"/>
 		</Unit>
@@ -711,7 +714,13 @@
 		<Unit filename="/Users/gleonett/Desktop/push_swap/push_swap/push_swap.h">
 			<Option target="push_swap"/>
 		</Unit>
+		<Unit filename="/Users/gleonett/Desktop/push_swap/push_swap/r_or_rr.c">
+			<Option target="push_swap"/>
+		</Unit>
 		<Unit filename="/Users/gleonett/Desktop/push_swap/push_swap/sort_stack.c">
+			<Option target="push_swap"/>
+		</Unit>
+		<Unit filename="/Users/gleonett/Desktop/push_swap/push_swap/sort_ten.c">
 			<Option target="push_swap"/>
 		</Unit>
 		<Unit filename="/Users/gleonett/Desktop/push_swap/to_do/do_p.c">

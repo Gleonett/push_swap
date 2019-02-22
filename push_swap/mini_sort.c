@@ -52,7 +52,7 @@ static int	mini_b_0(t_stacks *ab, t_sorted sorted)
 	num++;
 	if (sorted.sorted[sorted.top] == ab->b[ab->b_top])
 	{
-		do_pa(ab);
+		do_pa(ab, 0);
 		if (sorted.sorted[sorted.top + 1] != ab->b[ab->b_top])
 			do_sb(ab, 0);
 		many_pa(ab, 2);
@@ -69,7 +69,7 @@ static int	mini_b_0(t_stacks *ab, t_sorted sorted)
 	{
 		ab->b[B_NEXT] != sorted.sorted[sorted.top] ?
 		do_rrb(ab, 0) : do_sb(ab, 0);
-		do_pa(ab);
+		do_pa(ab, 0);
 		if (sorted.sorted[sorted.top + 1] != ab->b[ab->b_top])
 			do_sb(ab, 0);
 		many_pa(ab, 2);
@@ -82,7 +82,7 @@ int			mini_sort(t_stacks *ab, t_sorted sorted, int aorb, int flag)
 	if (sorted.bot - sorted.top < 3)
 	{
 		if (aorb == 1 && sorted.bot - sorted.top == 1)
-			do_pa(ab);
+			do_pa(ab, 0);
 		else if (aorb == 1 && sorted.bot - sorted.top == 2)
 		{
 			if (ab->b[ab->b_top] != sorted.sorted[sorted.top])

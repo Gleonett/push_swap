@@ -23,9 +23,9 @@ int do_oper(t_stacks *ab, char oper[])
 	else if (ft_strcmp(oper, "ss") == 0)
 		return (do_ss(ab));
 	else if (ft_strcmp(oper, "pa") == 0)
-		return (do_pa(ab));
+		return (do_pa(ab, 1));
 	else if (ft_strcmp(oper, "pb") == 0)
-		return (do_pb(ab));
+		return (do_pb(ab, 1));
 	else if (ft_strcmp(oper, "ra") == 0)
 		return (do_ra(ab, 0));
 	else if (ft_strcmp(oper, "rb") == 0)

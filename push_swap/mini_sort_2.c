@@ -60,7 +60,7 @@ static void	mini_b_1_sec_happening(t_stacks *ab, t_sorted sorted)
 	{
 		do_rb(ab, 0);
 		do_sb(ab, 0);
-		do_pa(ab);
+		do_pa(ab, 0);
 		do_rrb(ab, 0);
 		many_pa(ab, 2);
 	}
@@ -70,7 +70,7 @@ void		mini_b_1(t_stacks *ab, t_sorted sorted)
 {
 	if (sorted.sorted[sorted.top] == ab->b[ab->b_top])
 	{
-		do_pa(ab);
+		do_pa(ab, 0);
 		if (sorted.sorted[sorted.top + 1] != ab->b[ab->b_top])
 			do_sb(ab, 0);
 		many_pa(ab, sorted.bot - sorted.top - 1);
@@ -84,6 +84,6 @@ void		mini_b_1(t_stacks *ab, t_sorted sorted)
 			do_sb(ab, 0);
 		many_pa(ab, 2);
 		do_rrb(ab, 0);
-		do_pa(ab);
+		do_pa(ab, 0);
 	}
 }
