@@ -14,30 +14,40 @@
 
 static int check_stack_a(t_stacks *ab, t_sorted sorted, int i)
 {
+	const int start = A_PREV;
 	int j;
 	int f;
 
 	j = 0;
 	f = 0;
-//	print_stack(*ab);
+	print_stack(*ab);
 	while (i >= sorted.top)
 	{
-//		ft_printf("[%d] [%d]\n", ab->a[ab->a_top], sorted.sorted[i]);
-		if (ab->a[ab->a_top] != sorted.sorted[i])
+		while (ab->a[ab->a_top] > ab->a[A_NEXT])
 		{
-			do_ra(ab, 1);
-			j++;
+			//			ft_printf("[%d] [%d]\n", ab->a[ab->a_top], ab->a[A_NEXT]);
+			//			print_stack(*ab);
+			do_sa(ab, 0);
 			f++;
+			if (ab->a[ab->a_top] < ab->a[A_PREV] && A_PREV != start)
+			{
+				do_rra(ab, 0);
+				j--;
+				i++;
+				f++;
+			}
+			//			print_stack(*ab);
 		}
-		else
-		{
-			do_ra(ab, 1);
-			j++;
-		}
+		//		ft_printf("[%d] [%d]\n", ab->a[ab->a_top], ab->a[A_NEXT]);
+		print_stack(*ab);
+		do_ra(ab, 0);
+		j++;
+		f++;
+		print_stack(*ab);
 		i--;
-//				print_stack(*ab);
 	}
-	many_rra(ab, j, 1);
+	many_rra(ab, j, 0);
+	print_stack(*ab);
 	return (f);
 }
 
@@ -156,9 +166,9 @@ int	insertion_sort(t_stacks *ab, t_sorted sorted, int aorb)
 	const int k = 0;
 	t_stacks *cpy;
 
-	cpy = cpy_stacks(ab);
 	if (sorted.bot - sorted.top < 4)
 		return (0);
+	cpy = cpy_stacks(*ab);
 	if (aorb == 1)
 	{
 		if (check_stack_a(cpy, sorted, sorted.bot - 1) > 4)
