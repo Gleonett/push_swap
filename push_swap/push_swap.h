@@ -38,6 +38,7 @@ int			push_swap(int num, const char **args);
 int			*pre_sort(t_stacks ab);
 int			sort_stack(t_stacks *ab, int *sorted);
 int			mini_sort(t_stacks *ab, t_sorted sorted, int aorb, int flag);
+int			insertion_sort(t_stacks *ab, t_sorted sorted, int aorb);
 void		sort_ten(t_stacks *ab, t_sorted srtd, int med, int aorb);
 void		push_a_main_even(t_stacks *ab, t_sorted srtd, int med);
 void		push_a_main_uneven(t_stacks *ab, t_sorted srtd, int med);

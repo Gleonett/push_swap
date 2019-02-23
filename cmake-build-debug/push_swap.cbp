@@ -690,6 +690,9 @@
 		<Unit filename="/Users/gleonett/Desktop/push_swap/push_swap/cpy_stacks.c">
 			<Option target="push_swap"/>
 		</Unit>
+		<Unit filename="/Users/gleonett/Desktop/push_swap/push_swap/insertion_sort.c">
+			<Option target="push_swap"/>
+		</Unit>
 		<Unit filename="/Users/gleonett/Desktop/push_swap/push_swap/main.c">
 			<Option target="push_swap"/>
 		</Unit>

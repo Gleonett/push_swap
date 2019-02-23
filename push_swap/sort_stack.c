@@ -61,6 +61,8 @@ int 	q_sort_stack(t_stacks *ab, t_sorted srtd, int main_med, int *flag)
 {
 	int med;
 
+	if (insertion_sort(ab, srtd, srtd.flag) == 1)
+		return (0);
 	if (mediana(srtd, &med, &main_med, flag) == 1)
 	{
 		if (med >= main_med)
@@ -129,13 +131,27 @@ int	sort_stack(t_stacks *ab, int *sorted)
 	srtd.flag = 1;
 	mediana(srtd, &med, &main_med, &flag);
 
-	print_stack(*ab);
-	sort_ten(ab, srtd, med, 0);
-	print_stack(*ab);
+//	print_stack(*ab);
+//	do_pb(ab, 1);
+//	do_pb(ab, 1);
+//	do_pb(ab, 1);
+//	do_pb(ab, 1);
+//	do_pb(ab, 1);
+//	do_pb(ab, 1);
+//	insertion_sort(ab, srtd, 0);
+//	do_pa(ab, 1);
+//	do_pa(ab, 1);
+//	do_pa(ab, 1);
+//	do_pa(ab, 1);
+//	do_pa(ab, 1);
+//	do_pa(ab, 1);
+//	do_pa(ab, 1);
+//	print_stack(*ab);
+	//	sort_ten(ab, srtd, med, 0);
 	//	ft_printf("------------------------------------\n");
 //	r_or_rr(*ab, 0, med, (srtd.bot - srtd.top) / 2);
-//	q_sort_stack(ab, srtd, 0, &flag);
+	q_sort_stack(ab, srtd, 0, &flag);
 //	ft_printf("------------------------------------\n");
-//	print_stack(*ab);
+	print_stack(*ab);
     return (0);
 }

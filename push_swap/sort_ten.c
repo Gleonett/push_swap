@@ -109,8 +109,8 @@ void sort_ten(t_stacks *ab, t_sorted srtd, int med, int aorb)
 	buf = ab->a[ab->a_top];
 	while (--i > -1)
 	{
-		if (check_stack(ab, med, i) == 1)
-			break ;
+//		if (check_stack(ab, med, i) == 1)
+//			break ;
 		if (ab->a[ab->a_top] < buf)
 		{
 			do_pb(ab, 0);
@@ -122,7 +122,7 @@ void sort_ten(t_stacks *ab, t_sorted srtd, int med, int aorb)
 			do_ra(ab, 0);
 			nmb_rra++;
 		}
-		print_stack(*ab);
+//		print_stack(*ab);
 	}
 //	if (difference - f < 4)
 //	{
