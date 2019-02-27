@@ -12,31 +12,19 @@
 
 #include "checker.h"
 
-static const int c = 11;
-
-int			check_arr(t_stacks ab)
+static int	check_arr(t_stacks ab, int num)
 {
 	int i;
-	int j;
+	int buf;
 
-	if (ab.a_top + 1 >= ab.num)
+	i = 0;
+	buf = ab.a[ab.a_top];
+	while (++i < num)
 	{
-		i = 0;
-		j = ab.a_top;
-	}
-	else
-	{
-		i = ab.a_top + 1;
-		j = ab.a_top;
-	}
-	ft_printf("%d %d %d %d %d\n", ab.a[0], ab.a[1], ab.a[2], ab.a[3], ab.a[4]);
-	while (i != ab.a_top)
-	{
-		if (ab.a[i] <= ab.a[j])
+		do_ra(&ab, 1);
+		if (ab.a[ab.a_top] < buf)
 			return (2);
-		j = i;
-		if (++i == ab.num)
-			i = 0;
+		buf = ab.a[ab.a_top];
 	}
 	return (0);
 }
@@ -45,31 +33,23 @@ int			checker(int num, const char **args)
 {
 	t_stacks ab;
 	int ret;
-//	int fd;
+	char *oper;
 
-//	char oper[c][4] = {"pb", "pb", "ss", "pb", "pb", "pa", "pa", "pa", "pa"};
-//	char oper[c][4] = {"pb", "pb", "pb", "pb", "rb", "rb", "rb", "rb", "rb"};
-	char oper[c][4] = {"rra", "sa", "sa", "sa", "sa", "ra"};
-//	char oper[c][4] = {"pb", pb", "pb", "pb", "pb", "rrb", "rrb", "rrb",
-//	"rrb",
-//					"rrb", "rrb", "rrb", "rrb", "rrb", "rrb", "ra"};
-	if (check_args(num, args) != 0)
-		return (1);
-//	CH_ERR(init_a_b_stacks(&ab, num, args) != 0);
-//	fd = open("test", O_RDONLY);
-//	while (get_next_line(fd, &oper) > 0)
-//	print_stack(ab);
-	int i = -1;
-	while (++i < c)
+	CHECK_ONE(check_args(num, args) != 0);
+	CH_ERR_FREE(init_a_b_stacks(&ab, num, args) != 0);
+	while (get_next_line(0, &oper) > 0)
 	{
-		do_oper(&ab, oper[i]);
-		ft_printf("%{BLACK %s\n", oper[i]);
-//		print_stack(ab);
-//		ft_memdel((void **)&oper);
+		if (do_oper(&ab, oper) == 1)
+		{
+			ft_memdel((void **)&oper);
+			ft_memdel((void **)(&(ab.a)));
+			ft_memdel((void **)(&(ab.b)));
+			return (1);
+		}
+		ft_memdel((void **)&oper);
 	}
 	ret = check_arr(ab);
 	ft_memdel((void **)(&(ab.a)));
 	ft_memdel((void **)(&(ab.b)));
-//	close(fd);
 	return (ret);
 }

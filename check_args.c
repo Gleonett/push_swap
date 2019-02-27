@@ -17,11 +17,12 @@ static int check_arg(const char *arg)
 	int i;
 
 	i = 0;
-	if (arg[i] == '-')
+	if (arg[i] == '-' || arg[i] == '+')
 		i++;
 	while (arg[i] && arg[i] >= '0' && arg[i] <= '9')
 		i++;
-	if (arg[i] != '\0')
+	if (arg[i] != '\0' || i > 12 ||
+		(i == 1 && (arg[i - 1] == '-' || arg[i - 1] == '+')))
 		return (1);
 	return (0);
 }

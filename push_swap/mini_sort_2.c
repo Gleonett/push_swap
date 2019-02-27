@@ -17,11 +17,11 @@ static void	mini_a_1_sec_happening(t_stacks *ab, t_sorted sorted)
 	if (ab->a[A_NEXT] == sorted.sorted[sorted.top] && ab->a_num > 2)
 	{
 		do_ra(ab, 0);
-		do_sa(ab, 0);
+		ab->b[ab->b_top] < ab->b[B_NEXT] ? do_ss(ab, 0) : do_sa(ab, 0);
 		do_rra(ab, 0);
 	}
 	if (sorted.sorted[sorted.top + 1] == ab->a[ab->a_top] && ab->a_num != 2)
-		do_sa(ab, 0);
+		ab->b[ab->b_top] < ab->b[B_NEXT] ? do_ss(ab, 0) : do_sa(ab, 0);
 }
 
 void		mini_a_1(t_stacks *ab, t_sorted sorted)
@@ -29,7 +29,7 @@ void		mini_a_1(t_stacks *ab, t_sorted sorted)
 //	ft_printf("%d %d\n", sorted.sorted[sorted.top], ab->a[ab->a_top]);
 	if (sorted.sorted[sorted.top] == ab->a[ab->a_top])
 	{
-		do_sa(ab, 0);
+		ab->b[ab->b_top] < ab->b[B_NEXT] ? do_ss(ab, 0) : do_sa(ab, 0);
 		do_ra(ab, 0);
 		do_sa(ab, 0);
 		do_rra(ab, 0);
@@ -43,7 +43,7 @@ void		mini_a_1(t_stacks *ab, t_sorted sorted)
 		if (ab->a[A_NEXT] == sorted.sorted[sorted.top])
 		{
 			do_ra(ab, 0);
-			do_sa(ab, 0);
+			ab->b[ab->b_top] < ab->b[B_NEXT] ? do_ss(ab, 0) : do_sa(ab, 0);
 			do_rra(ab, 0);
 		}
 	}
@@ -54,7 +54,7 @@ static void	mini_b_1_sec_happening(t_stacks *ab, t_sorted sorted)
 	if (ab->b[B_NEXT] == sorted.sorted[sorted.top])
 	{
 		do_sb(ab, 0);
-		many_pa(ab, 3);
+		many_pa(ab, 3, 0);
 	}
 	else
 	{
@@ -62,7 +62,7 @@ static void	mini_b_1_sec_happening(t_stacks *ab, t_sorted sorted)
 		do_sb(ab, 0);
 		do_pa(ab, 0);
 		do_rrb(ab, 0);
-		many_pa(ab, 2);
+		many_pa(ab, 2, 0);
 	}
 }
 
@@ -73,7 +73,7 @@ void		mini_b_1(t_stacks *ab, t_sorted sorted)
 		do_pa(ab, 0);
 		if (sorted.sorted[sorted.top + 1] != ab->b[ab->b_top])
 			do_sb(ab, 0);
-		many_pa(ab, sorted.bot - sorted.top - 1);
+		many_pa(ab, sorted.bot - sorted.top - 1, 0);
 	}
 	else if (sorted.sorted[sorted.top + 1] == ab->b[ab->b_top])
 		mini_b_1_sec_happening(ab, sorted);
@@ -82,7 +82,7 @@ void		mini_b_1(t_stacks *ab, t_sorted sorted)
 		do_rb(ab, 0);
 		if (sorted.sorted[sorted.top] != ab->b[ab->b_top])
 			do_sb(ab, 0);
-		many_pa(ab, 2);
+		many_pa(ab, 2, 0);
 		do_rrb(ab, 0);
 		do_pa(ab, 0);
 	}

@@ -12,45 +12,51 @@
 
 #include "push_swap.h"
 
-static int	check_arr(t_stacks ab)
+static int	check_arr(t_stacks ab, int num)
 {
 	int i;
-	int j;
+	int buf;
 
-	if (ab.a_top + 1 >= ab.num)
+	i = 0;
+	buf = ab.a[ab.a_top];
+	while (++i < num)
 	{
-		i = 0;
-		j = ab.a_top;
-	}
-	else
-	{
-		i = ab.a_top + 1;
-		j = ab.a_top;
-	}
-	while (i != ab.a_top)
-	{
-		if (ab.a[i] <= ab.a[j])
+		do_ra(&ab, 1);
+		if (ab.a[ab.a_top] < buf)
 			return (2);
-		j = i;
-		if (++i == ab.num)
-			i = 0;
+		buf = ab.a[ab.a_top];
 	}
 	return (0);
 }
 
-int			push_swap(int num, const char **args)
+static void init_debug(void)
+{
+	do_pa(NULL, 2);
+	do_pb(NULL, 2);
+	do_sa(NULL, 2);
+	do_sb(NULL, 2);
+	do_ss(NULL, 2);
+	do_ra(NULL, 2);
+	do_rb(NULL, 2);
+	do_rr(NULL, 2);
+	do_rra(NULL, 2);
+	do_rrb(NULL, 2);
+	do_rrr(NULL, 2);
+}
+
+int			push_swap(int num, const char **args, int debug)
 {
 	t_stacks ab;
 	int *sorted;
 	int ret;
 
+	debug == 1 ? init_debug() : 0;
 	if (check_args(num, args) != 0)
 		return (1);
 	CH_ERR_FREE(init_a_b_stacks(&ab, num, args) != 0);
 	CH_SORTED(sorted = pre_sort(ab));
 	sort_stack(&ab, sorted);
-//	print_stack(ab);
-	ret = check_arr(ab);
+	ret = check_arr(ab, num);
 	ft_memdel((void **)(&(ab.a)));
 	ft_memdel((void **)(&(ab.b)));
 	ft_memdel((void **)&sorted);

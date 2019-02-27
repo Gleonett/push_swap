@@ -15,7 +15,13 @@
 int	do_ra(t_stacks *ab, int flag)
 {
 	int a_bot;
+	static int debug;
 
+	if (flag == 2)
+	{
+		debug = 1;
+		return (0);
+	}
     if (flag == 0)
         ft_putstr_full("ra\n");
 	if (ab->a_num < 2)
@@ -27,20 +33,27 @@ int	do_ra(t_stacks *ab, int flag)
 	ab->a[a_bot] = ab->a[ab->a_top];
 	if ((ab->a_top += 1) == ab->num)
 		ab->a_top = 0;
+	debug == 1 && flag == 0 ? print_stack(ab, 3) : 0;
 	return (0);
 }
 
 void	many_ra(t_stacks *ab, int num, int flag)
 {
 	while (--num > -1)
-		do_ra(ab, flag == 0 ? 0 : 1);
+		do_ra(ab, flag);
 }
 
 
 int	do_rb(t_stacks *ab, int flag)
 {
 	int b_bot;
+	static int debug;
 
+	if (flag == 2)
+	{
+		debug = 1;
+		return (0);
+	}
 	if (flag == 0)
         ft_putstr_full("rb\n");
 	if (ab->b_num < 2)
@@ -52,20 +65,29 @@ int	do_rb(t_stacks *ab, int flag)
 	ab->b[b_bot] = ab->b[ab->b_top];
 	if ((ab->b_top += 1) == ab->num)
 		ab->b_top = 0;
+	debug == 1 && flag == 0 ? print_stack(ab, 10) : 0;
 	return (0);
 }
 
 void	many_rb(t_stacks *ab, int num, int flag)
 {
 	while (--num > -1)
-		do_rb(ab, flag == 0 ? 0 : 1);
+		do_rb(ab, flag);
 }
 
 
-int	do_rr(t_stacks *ab)
+int	do_rr(t_stacks *ab, int flag)
 {
+	static int debug;
+
+	if (flag == 2)
+	{
+		debug = 1;
+		return (0);
+	}
     ft_putstr_full("rr\n");
 	do_ra(ab, 1);
 	do_rb(ab, 1);
+	debug == 1 && flag == 0 ? print_stack(ab, 6) : 0;
 	return (0);
 }

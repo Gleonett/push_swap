@@ -687,10 +687,10 @@
 			<Option target="push_swap"/>
 			<Option target="checker"/>
 		</Unit>
-		<Unit filename="/Users/gleonett/Desktop/push_swap/push_swap/cpy_stacks.c">
+		<Unit filename="/Users/gleonett/Desktop/push_swap/push_swap/Insertion_sort.c">
 			<Option target="push_swap"/>
 		</Unit>
-		<Unit filename="/Users/gleonett/Desktop/push_swap/push_swap/insertion_sort.c">
+		<Unit filename="/Users/gleonett/Desktop/push_swap/push_swap/cpy_stacks.c">
 			<Option target="push_swap"/>
 		</Unit>
 		<Unit filename="/Users/gleonett/Desktop/push_swap/push_swap/main.c">
@@ -700,6 +700,9 @@
 			<Option target="push_swap"/>
 		</Unit>
 		<Unit filename="/Users/gleonett/Desktop/push_swap/push_swap/mini_sort_2.c">
+			<Option target="push_swap"/>
+		</Unit>
+		<Unit filename="/Users/gleonett/Desktop/push_swap/push_swap/pre_insort.c">
 			<Option target="push_swap"/>
 		</Unit>
 		<Unit filename="/Users/gleonett/Desktop/push_swap/push_swap/pre_sort.c">

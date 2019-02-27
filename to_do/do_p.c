@@ -14,6 +14,13 @@
 
 int		do_pa(t_stacks *ab, int flag)
 {
+	static int debug;
+
+	if (flag == 2)
+	{
+		debug = 1;
+		return (0);
+	}
 	if (flag == 0)
     	ft_putstr_full("pa\n");
 	if (ab->b_num < 1)
@@ -25,11 +32,19 @@ int		do_pa(t_stacks *ab, int flag)
 		ab->b_top = 0;
 	ab->a_num += 1;
 	ab->b_num -= 1;
+	debug == 1 && flag == 0 ? print_stack(ab, 1) : 0;
 	return (0);
 }
 
 int		do_pb(t_stacks *ab, int flag)
 {
+	static int debug;
+
+	if (flag == 2)
+	{
+		debug = 1;
+		return (0);
+	}
 	if (flag == 0)
     	ft_putstr_full("pb\n");
 	if (ab->a_num < 1)
@@ -41,11 +56,12 @@ int		do_pb(t_stacks *ab, int flag)
 		ab->a_top = 0;
 	ab->a_num -= 1;
 	ab->b_num += 1;
+	debug == 1 && flag == 0 ? print_stack(ab, 8) : 0;
 	return (0);
 }
 
-void	many_pa(t_stacks *ab, int num)
+void		many_pa(t_stacks *ab, int num, int flag)
 {
 	while (--num > -1)
-		do_pa(ab, 0);
+		do_pa(ab, flag);
 }

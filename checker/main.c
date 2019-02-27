@@ -15,10 +15,12 @@
 int	main(int argc, char **argv)
 {
 	int res;
+	int i;
 
 	if (argc < 2)
 		return (1);
-	if ((res = checker(argc - 1, (const char **)argv + 1)) == 1)
+	i = ft_strcmp(argv[1], "--vc") == 0 ? 1 : 0;
+	if ((res = checker(argc - 1 - i, (const char **)argv + 1 + i)) == 1)
 		ft_printf("%{PURPLE Error\n");
 	else if (res == 2)
 		ft_printf("%{RED KO\n");

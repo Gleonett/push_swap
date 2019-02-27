@@ -102,9 +102,9 @@ void	push_a_secondary_even(t_stacks *ab, t_sorted srtd, int med)
 		}
 //		print_stack(*ab);
 	}
-	if (rorrr == 0)
+	if (rorrr == 0 && ab->b_num > 6)
 		many_rrb(ab, f, 0);
-	else
+	else if (ab->b_num > 6)
 		many_rb(ab, f, 0);
 }
 
@@ -134,8 +134,8 @@ void	push_a_secondary_uneven(t_stacks *ab, t_sorted srtd, int med)
 		}
 //		print_stack(*ab);
 	}
-	if (rorrr == 0)
+	if (rorrr == 0 && ab->b_num > 3)
 		many_rrb(ab, f, 0);
-	else
+	else if (ab->b_num > 3)
 		many_rb(ab, f, 0);
 }

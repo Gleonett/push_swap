@@ -21,6 +21,7 @@ int	count_ra(t_stacks *stack_r, int med, int difference)
 	cnt_r = 0;
 	while (i < difference)
 	{
+//		print_stack(*stack_r);
 		if (stack_r->a[stack_r->a_top] <= med)
 		{
 			i++;

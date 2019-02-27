@@ -12,6 +12,22 @@
 
 #include "checker/checker.h"
 
+static int check_repetitions(int *a, int num)
+{
+	int i;
+	int j;
+
+	i = -1;
+	while (++i < num)
+	{
+		j = i;
+		while (++j < num)
+			if (a[i] == a[j])
+				return (1);
+	}
+	return (0);
+}
+
 int			init_a_b_stacks(t_stacks *ab, int num, const char **data)
 {
 	int			i;
@@ -26,6 +42,7 @@ int			init_a_b_stacks(t_stacks *ab, int num, const char **data)
 			return (1);
 		ab->a[i] = (int)buf;
 	}
+	CHECK_ONE(check_repetitions(ab->a, num));
 	ab->num = num;
 	ab->a_top = 0;
 	ab->b_top = num;

@@ -63,6 +63,7 @@ int 	q_sort_stack(t_stacks *ab, t_sorted srtd, int main_med, int *flag)
 
 	if (insertion_sort(ab, srtd, srtd.flag) == 1)
 		return (0);
+//	print_stack(*ab);
 	if (mediana(srtd, &med, &main_med, flag) == 1)
 	{
 		if (med >= main_med)
@@ -79,16 +80,12 @@ int 	q_sort_stack(t_stacks *ab, t_sorted srtd, int main_med, int *flag)
 				mini_sort(ab, srtd, 1, 1);
 			else if (srtd.flag == 1)
 				mini_sort(ab, srtd, 0, 1);
-//		print_stack(*ab);
 		return (0);
 	}
 	if (med >= main_med)
 	{
         if (srtd.flag == 1)
-        	if ((srtd.bot - srtd.top) % 2 == 0)
-            	push_b_main_even(ab, srtd, med, *flag);
-        	else
-				push_b_main_uneven(ab, srtd, med, *flag);
+        	CHECK_ONE(push_b_main_even(ab, srtd, med, *flag))
         else
 			if ((srtd.bot - srtd.top) % 2 == 0)
 				push_a_main_even(ab, srtd, med);
@@ -97,21 +94,17 @@ int 	q_sort_stack(t_stacks *ab, t_sorted srtd, int main_med, int *flag)
     }
 	else
 	{
-		if (srtd.flag == 0)
+		if (srtd.flag == 1)
+			push_b_secondary_even(ab, srtd, med);
+		else
 			if ((srtd.bot - srtd.top) % 2 == 0)
 				push_a_secondary_even(ab, srtd, med);
 			else
 				push_a_secondary_uneven(ab, srtd, med);
-		else
-			if ((srtd.bot - srtd.top) % 2 == 0)
-				push_b_secondary_even(ab, srtd, med);
-			else
-				push_b_secondary_uneven(ab, srtd, med);
 	}
 //	print_stack(*ab);
 	q_sort_stack(ab, init_sorted(srtd, med, main_med, 1), main_med, flag);
-	if (med == main_med)
-		*flag = 0;
+	med == main_med ? *flag = 0 : 0;
 	q_sort_stack(ab, init_sorted(srtd, med, main_med, 0), main_med, flag);
 	return (0);
 }
@@ -129,29 +122,6 @@ int	sort_stack(t_stacks *ab, int *sorted)
 	srtd.top = 0;
 	srtd.bot = ab->num;
 	srtd.flag = 1;
-	mediana(srtd, &med, &main_med, &flag);
-
-//	print_stack(*ab);
-//	do_pb(ab, 1);
-//	do_pb(ab, 1);
-//	do_pb(ab, 1);
-//	do_pb(ab, 1);
-//	do_pb(ab, 1);
-//	do_pb(ab, 1);
-//	insertion_sort(ab, srtd, 0);
-//	do_pa(ab, 1);
-//	do_pa(ab, 1);
-//	do_pa(ab, 1);
-//	do_pa(ab, 1);
-//	do_pa(ab, 1);
-//	do_pa(ab, 1);
-//	do_pa(ab, 1);
-//	print_stack(*ab);
-	//	sort_ten(ab, srtd, med, 0);
-	//	ft_printf("------------------------------------\n");
-//	r_or_rr(*ab, 0, med, (srtd.bot - srtd.top) / 2);
 	q_sort_stack(ab, srtd, 0, &flag);
-//	ft_printf("------------------------------------\n");
-	print_stack(*ab);
     return (0);
 }
