@@ -20,7 +20,7 @@ static void	sort_a(t_stacks *ab, t_sorted sorted)
 
 	i = sorted.bot - 1;
 	j = 0;
-//	print_stack(*ab);
+	print_stack(*ab);
 	while (i >= sorted.top)
 	{
 		while (ab->a[ab->a_top] > ab->a[A_NEXT])
