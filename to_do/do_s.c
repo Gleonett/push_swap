@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../checker/checker.h"
+#include "../f_checker/checker.h"
 
-int	do_sa(t_stacks *ab, int flag)
+int		do_sa(t_stacks *ab, int flag)
 {
-	int a_second;
-	static int debug;
+	int			a_second;
+	static int	debug;
 
 	if (flag == 2)
 	{
@@ -23,7 +23,7 @@ int	do_sa(t_stacks *ab, int flag)
 		return (0);
 	}
 	if (flag == 0)
-	    ft_putstr_full("sa\n");
+		ft_putstr_full("sa\n");
 	if (ab->a_num < 2)
 		return (0);
 	if ((a_second = ab->a_top + 1) == ab->num)
@@ -33,10 +33,10 @@ int	do_sa(t_stacks *ab, int flag)
 	return (0);
 }
 
-int	do_sb(t_stacks *ab, int flag)
+int		do_sb(t_stacks *ab, int flag)
 {
-	int b_second;
-	static int debug;
+	int			b_second;
+	static int	debug;
 
 	if (flag == 2)
 	{
@@ -44,7 +44,7 @@ int	do_sb(t_stacks *ab, int flag)
 		return (0);
 	}
 	if (flag == 0)
-        ft_putstr_full("sb\n");
+		ft_putstr_full("sb\n");
 	if (ab->b_num < 2)
 		return (0);
 	if ((b_second = ab->b_top + 1) == ab->num)
@@ -54,7 +54,7 @@ int	do_sb(t_stacks *ab, int flag)
 	return (0);
 }
 
-int	do_ss(t_stacks *ab, int flag)
+int		do_ss(t_stacks *ab, int flag)
 {
 	static int debug;
 
@@ -63,7 +63,8 @@ int	do_ss(t_stacks *ab, int flag)
 		debug = 1;
 		return (0);
 	}
-	ft_putstr_full("ss\n");
+	if (flag == 0)
+		ft_putstr_full("ss\n");
 	do_sa(ab, 1);
 	do_sb(ab, 1);
 	debug == 1 && flag == 0 ? print_stack(ab, 5) : 0;

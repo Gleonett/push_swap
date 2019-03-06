@@ -10,20 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../checker/checker.h"
+#include "../f_checker/checker.h"
 
-int	do_ra(t_stacks *ab, int flag)
+int		do_ra(t_stacks *ab, int flag)
 {
-	int a_bot;
-	static int debug;
+	int			a_bot;
+	static int	debug;
 
 	if (flag == 2)
 	{
 		debug = 1;
 		return (0);
 	}
-    if (flag == 0)
-        ft_putstr_full("ra\n");
+	if (flag == 0)
+		ft_putstr_full("ra\n");
 	if (ab->a_num < 2)
 		return (0);
 	if (ab->a_top + ab->a_num >= ab->num)
@@ -43,11 +43,10 @@ void	many_ra(t_stacks *ab, int num, int flag)
 		do_ra(ab, flag);
 }
 
-
-int	do_rb(t_stacks *ab, int flag)
+int		do_rb(t_stacks *ab, int flag)
 {
-	int b_bot;
-	static int debug;
+	int			b_bot;
+	static int	debug;
 
 	if (flag == 2)
 	{
@@ -55,7 +54,7 @@ int	do_rb(t_stacks *ab, int flag)
 		return (0);
 	}
 	if (flag == 0)
-        ft_putstr_full("rb\n");
+		ft_putstr_full("rb\n");
 	if (ab->b_num < 2)
 		return (0);
 	if (ab->b_top + ab->b_num >= ab->num)
@@ -75,8 +74,7 @@ void	many_rb(t_stacks *ab, int num, int flag)
 		do_rb(ab, flag);
 }
 
-
-int	do_rr(t_stacks *ab, int flag)
+int		do_rr(t_stacks *ab, int flag)
 {
 	static int debug;
 
@@ -85,7 +83,8 @@ int	do_rr(t_stacks *ab, int flag)
 		debug = 1;
 		return (0);
 	}
-    ft_putstr_full("rr\n");
+	if (flag == 0)
+		ft_putstr_full("rr\n");
 	do_ra(ab, 1);
 	do_rb(ab, 1);
 	debug == 1 && flag == 0 ? print_stack(ab, 6) : 0;

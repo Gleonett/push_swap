@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   atoli.c                                            :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gleonett <gleonett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/09 11:52:40 by gleonett          #+#    #+#             */
-/*   Updated: 2019/02/09 11:53:38 by gleonett         ###   ########.fr       */
+/*   Created: 2018/11/25 15:08:30 by gleonett          #+#    #+#             */
+/*   Updated: 2018/12/01 09:20:21 by gleonett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "f_checker/checker.h"
+#include "libft.h"
 
-long int	ft_atoli(const char *str)
+int	ft_atoi(const char *str)
 {
-	int			znak;
-	long int	res;
+	int					znak;
+	unsigned long long	res;
 
 	znak = 1;
 	res = 0;
 	while ((*str == '\n') || (*str == '\t') || (*str == '\v') ||
-			(*str == ' ') || (*str == '\f') || (*str == '\r'))
+		(*str == ' ') || (*str == '\f') || (*str == '\r'))
 		str++;
 	if (*str == '-' || *str == '+')
 		*str++ == '-' ? znak = -1 : 1;
@@ -33,5 +33,5 @@ long int	ft_atoli(const char *str)
 		else
 			return (0);
 	}
-	return (znak * res);
+	return (znak * (int)res);
 }

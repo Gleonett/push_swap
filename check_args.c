@@ -10,30 +10,55 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker/checker.h"
+#include "f_checker/checker.h"
 
-static int check_arg(const char *arg)
+int			skip_spaces(const char *arg, int *i)
 {
-	int i;
-
-	i = 0;
-	if (arg[i] == '-' || arg[i] == '+')
-		i++;
-	while (arg[i] && arg[i] >= '0' && arg[i] <= '9')
-		i++;
-	if (arg[i] != '\0' || i > 12 ||
-		(i == 1 && (arg[i - 1] == '-' || arg[i - 1] == '+')))
-		return (1);
-	return (0);
+	while (arg[*i] && (arg[*i] == '\t' || arg[*i] == ' '))
+		*i += 1;
+	return (arg[*i] == '\0' ? 1 : 0);
 }
 
-int check_args(int num, const char **data)
+static int	check_arg(const char *arg)
 {
 	int i;
+	int j;
+	int num;
+
+	i = 0;
+	num = 0;
+	while (arg[i] && (arg[i] == ' ' || arg[i] == '\t' || arg[i] == '\n' ||
+			arg[i] == '-' || arg[i] == '+' || (arg[i] >= '0' && arg[i] <= '9')))
+	{
+		if (skip_spaces(arg, &i) == 1)
+			return (num == 0 ? -1 : num);
+		j = i;
+		if (arg[i] == '-' || arg[i] == '+')
+			i++;
+		while (arg[i] && arg[i] >= '0' && arg[i] <= '9')
+			i++;
+		if (i - j > 6)
+			print_stack(NULL, -1);
+		else if (i - j > 12 || ((arg[j] == '+' || arg[j] == '-') &&
+		(i - j == 1)))
+			return (-1);
+		num++;
+	}
+	return (arg[i] != '\0' || num == 0 ? -1 : num);
+}
+
+int			check_args(int num, const char **data)
+{
+	int i;
+	int res;
+	int ret;
 
 	i = -1;
+	ret = 0;
 	while (++i < num)
-		if (check_arg(data[i]) != 0)
-			return (1);
-	return (0);
+		if (data[i][0] == '\0' || (res = check_arg(data[i])) == -1)
+			return (-1);
+		else
+			ret += res;
+	return (ret);
 }

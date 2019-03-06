@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../checker/checker.h"
+#include "../f_checker/checker.h"
 
 int		do_pa(t_stacks *ab, int flag)
 {
@@ -22,7 +22,7 @@ int		do_pa(t_stacks *ab, int flag)
 		return (0);
 	}
 	if (flag == 0)
-    	ft_putstr_full("pa\n");
+		ft_putstr_full("pa\n");
 	if (ab->b_num < 1)
 		return (0);
 	if ((ab->a_top -= 1) < 0)
@@ -46,7 +46,7 @@ int		do_pb(t_stacks *ab, int flag)
 		return (0);
 	}
 	if (flag == 0)
-    	ft_putstr_full("pb\n");
+		ft_putstr_full("pb\n");
 	if (ab->a_num < 1)
 		return (0);
 	if ((ab->b_top -= 1) < 0)
@@ -60,7 +60,7 @@ int		do_pb(t_stacks *ab, int flag)
 	return (0);
 }
 
-void		many_pa(t_stacks *ab, int num, int flag)
+void	many_pa(t_stacks *ab, int num, int flag)
 {
 	while (--num > -1)
 		do_pa(ab, flag);
